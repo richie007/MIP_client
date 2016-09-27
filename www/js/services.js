@@ -1,6 +1,6 @@
-angular.module('starter.services', [])
+var app = angular.module('starter.services', [])
 
-.factory('Chats', function() {
+app.factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -48,23 +48,64 @@ angular.module('starter.services', [])
     }
   };
 });
-// .factory('Posts', function() {
-//
-//   var posts = [{
-//     id: 0,
-//     name: 'Richard Sparrow',
-//     smallimg: 'img/user.png',
-//     bigimg: 'img/home.png'
-//   },  {
-//     id: 1,
-//     name: 'jack Sparrow',
-//     smallimg: 'img/user.png',
-//     bigimg: 'img/home.png'
-//   }];
-//
-//   return {
-//     all: function() {
-//       return posts;
-//     }
-//   };
-// });
+app.factory('Postvars', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var postvars = [{
+    id: 0,
+    name: 'Richard Sparrow',
+    lastText: 'You on your way?',
+    date: '20 Sep 2016',
+    smallimg: 'img/user.jpg',
+    bigimg: 'img/home.jpg'
+  }, {
+    id: 1,
+    name: 'Richard Sparrow',
+    lastText: 'Nature #peace',
+    date: '20 Aug 2016',
+    smallimg: 'img/user.jpg',
+    bigimg: 'img/home1.jpg'
+  },
+  {
+    id: 2,
+    name: 'Richard Sparrow',
+    lastText: 'Sunset',
+    date: '18 Aug 2016',
+    smallimg: 'img/user.jpg',
+    bigimg: 'img/home2.jpg'
+  },
+  {
+    id: 3,
+    name: 'Richard Sparrow',
+    lastText: 'Top 10 lists',
+    date: '14 Aug 2016',
+    smallimg: 'img/user.jpg',
+    bigimg: 'img/home3.jpg'
+  }, {
+    id: 4,
+    name: 'Richard Sparrow',
+    lastText: 'Winter is coming',
+    date: '12 Sep 2015',
+    smallimg: 'img/user.jpg',
+    bigimg: 'img/home4.jpg'
+
+  }];
+
+  return {
+    all: function() {
+      return postvars;
+    },
+    remove: function(postvar) {
+      postvars.splice(postvars.indexOf(postvar), 1);
+    },
+    get: function(postvarId) {
+      for (var i = 0; i < postvars.length; i++) {
+        if (postvars[i].id === parseInt(postvarId)) {
+          return postvars[i];
+        }
+      }
+      return null;
+    }
+  };
+});

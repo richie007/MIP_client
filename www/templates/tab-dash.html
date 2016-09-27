@@ -5,26 +5,26 @@
       <!-- <img ng-src="{{chat.face}}">
       <h2>{{chat.name}}</h2>
       <p>{{chat.lastText}}</p> -->
-
+      <ion-list ng-repeat="postvar in postctrlscope" >
         <div class="list card">
 
             <div class="item item-avatar">
 
-                <img src="../img/user.jpg">
+                <img ng-src="{{postvar.smallimg}}">
 
-                <!-- <h2>{{post.name}}</h2> -->
-                <h2> Richard Awale </h2>
+                <h2>{{postvar.name}}</h2>
+                <!-- <h2> Richard Awale </h2> -->
 
-                <p>Se 05, 2016</p>
+
 
             </div>
 
             <div class="item item-body">
 
                 <!-- <img class="full-image" ng-src="{{post.bigimg}}"> -->
-                  <img class="full-image" src="../img/home.jpg">
+                  <img class="full-image" ng-src="{{postvar.bigimg}}">
 
-                <p>
+              <P>{{postvar.lastText}}</P>
 
                     <a href="#" class="subdued">1 Like</a>
 
@@ -58,7 +58,7 @@
 
         </div>
 
-
+</ion-list>
 
     </ion-content>
 

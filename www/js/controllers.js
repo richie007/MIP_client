@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
-.controller('DashCtrl', function($scope, Posts) {
-  $scope.posts = Posts.all();
+.controller('DashCtrl', function($scope, Postvars) {
+  $scope.postctrlscope = Postvars.all();
 
 })
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -14,8 +14,8 @@ angular.module('starter.controllers', [])
 $scope.chat = Chats.get($stateParams.chatId);
 
 })
-.controller('AccountCtrl', function($scope) {
-
+.controller('AccountCtrl', function($scope ) {
+  // $scope.profilectrlscope = Profiles.all();
 $scope.settings = {
   enableFriends: true
 };
