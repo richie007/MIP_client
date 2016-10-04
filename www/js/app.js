@@ -1,11 +1,7 @@
-// Ionic Starter App
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('someklone.services', []);
+
+angular.module('someklone', ['ionic', 'someklone.controllers', 'someklone.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -25,16 +21,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
+  $ionicConfigProvider.tabs.position("bottom");
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
-
-  $ionicConfigProvider.tabs.position('bottom');
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
@@ -42,52 +37,55 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.home', {
+    url: '/home',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-home': {
+        templateUrl: 'templates/tab-home.html',
+        controller: 'HomeCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.browse', {
+    url: '/browse',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
+        'tab-browse': {
+          templateUrl: 'templates/tab-browse.html',
+          controller: 'BrowseCtrl'
       }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    }
+  })
+
+  .state('tab.browse-detail', {
+    url: '/browse/:id',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
+        'tab-browse': {
+          templateUrl: 'templates/browse-detail.html',
+          controller: 'BrowseDetailCtrl'
       }
-    })
-    .state('tab.tab-camera', {
-      url: '/camera',
+    }
+  })
+
+  .state('tab.browse-search', {
+    url: '/search',
       views: {
-        'tab-camera': {
-          templateUrl: 'templates/tab-camera.html',
-          controller: 'CameraCtrl'
-        }
+        'tab-browse': {
+          templateUrl: 'templates/tab-search.html',
+          controller: 'SearchCtrl'
       }
-    })
-    .state('tab.tab-notification', {
-      url: '/notification',
+    }
+  })
+
+  .state('tab.activity', {
+    url: '/activity',
       views: {
-        'tab-notification': {
-          templateUrl: 'templates/tab-notification.html',
-          controller: 'NotificationCtrl'
-        }
+        'tab-activity': {
+          templateUrl: 'templates/tab-activity.html',
+          controller: 'ActivityCtrl'
       }
-    })
+    }
+  })
 
   .state('tab.account', {
     url: '/account',
@@ -97,9 +95,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'AccountCtrl'
       }
     }
+  })
+
+  .state('post', {
+    url: '/post',
+    templateUrl: 'templates/post.html',
+    controller: 'PostCtrl'  
+  })
+
+  .state('post-confirm', {
+    url: '/confirm',
+    templateUrl: 'templates/post-confirm.html',
+    controller: 'PostConfirmCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/home');
 
 });

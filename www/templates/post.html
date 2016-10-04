@@ -1,0 +1,44 @@
+<ion-header-bar align-title="left" >
+    <div class="buttons" >
+        <button class="button button-icon ion-ios-close-empty" ng-click="goBack()">  Photo</button>
+    </div>
+    <h1 class="title"></h1>
+    <div class="buttons">
+        <button class="button" ng-click="confimPost()">Next</button>
+    </div>
+</ion-header-bar>
+<ion-content class="has-tabs">
+    <div ng-if="tabs.gallery">
+        <div>
+            <img class="maxWidth" src="img/logo.jpg">
+        </div>
+        <div class="imageHolder">
+            <div class="imageFrameFour">
+                <img src="img/user.jpg" ng-click="browseDetail(5)">
+            </div>
+            <div class="imageFrameFour">
+                <img src="img/home4.jpg" ng-click="browseDetail(5)">
+            </div>
+            <div class="imageFrameFour">
+                <img src="img/home2.jpg" ng-click="browseDetail(5)">
+            </div>
+            <div class="imageFrameFour">
+                <img src="img/home1.jpg" ng-click="browseDetail(5)">
+            </div>
+        </div>
+    </div>
+    <div ng-if="tabs.photo">
+        Photo plugin operations and results here
+        <button class = "button" ng-click = "takePicture()">Take Picture</button>
+<button class = "button" ng-click = "getPicture()">Open Gallery</button>
+<img ng-src = "{{user.picture}}">
+    </div>
+</ion-content>
+<div class="tabs tabs-light">
+    <a class="tab-item" ng-class="{active: tabs.gallery == true }" ng-click="gallery()">
+        Gallery
+    </a>
+    <a class="tab-item" ng-class="{active: tabs.photo == true }" ng-click="photo()">
+        Photo
+    </a>
+</div>
